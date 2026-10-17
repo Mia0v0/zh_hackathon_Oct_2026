@@ -1,6 +1,6 @@
 x-zenith:
   catalog:
-    name: CampusGo
+    name: On My Way (OMW)
     description: A peer-to-peer campus delivery board for students and staff.
     authors: [Mia O.]
     source: https://github.com/Mia0v0/zh_hackathon_Oct_2026
