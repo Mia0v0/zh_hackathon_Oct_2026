@@ -1,16 +1,17 @@
-/* CampusGo's default palette: white surfaces with purple and warm yellow accents. */
+/* White, blue, and warm accents in light mode; black and yellow in dark mode. */
 :root {
-  --ink: #302541;
-  --deep: #3b2b51;
-  --green: #6846a5;
-  --mint: #f0eafb;
+  color-scheme: light;
+  --ink: #202431;
+  --deep: #18263b;
   --paper: #ffffff;
-  --line: #ebe6f2;
-  --muted: #887f94;
-  --accent: #f2cb45;
-  --accent-soft: #fff7d8;
   --surface: #ffffff;
-  --surface-muted: #faf8fd;
+  --surface-alt: #f7f9fc;
+  --line: #e7eaf0;
+  --muted: #737d8d;
+  --brand: #1b5ca8;
+  --brand-contrast: #ffffff;
+  --warm: #e9a211;
+  --warm-soft: #fff5d6;
 }
 
 body { background: var(--paper); color: var(--ink); }
@@ -18,40 +19,45 @@ body { background: var(--paper); color: var(--ink); }
 .profile-card, .login-card, .campus-chip, .sort-button, .nav-count,
 .hero-button, .signup-button { background-color: var(--surface); }
 .brand { color: var(--deep); }
-.brand-mark, .primary-button { background-color: #6846a5; }
-.brand-mark span { color: var(--accent); }
-.primary-button:hover { background-color: #533582; }
-.nav-item.active, .filter-tab.active { background: var(--mint); color: #6846a5; }
-.hero-card { background: #f2edfa; }
-.hero-card h2 { color: #3b2b51; }
-.hero-card h2 em, .text-link, .fee, .credit-note span:last-child { color: #6846a5; }
-.hero-kicker, .section-eyebrow { color: #78629b; }
-.hero-emoji, .welcome-row h1 span, .tiny-spark { color: #d1a817; }
-.credit-card { background: #f4f0fa; }
-.credit-meter span { background: #8d6bc6; }
-.stat-icon.mint { background: #f0eafb; color: #6846a5; }
-.stat-icon.peach, .gift-icon { background: #fff7d8; color: #9a7713; }
-.stat-icon.lavender { background: #eee8f8; color: #6846a5; }
-.take-button { background: #f5f0fb; border-color: #e2d8f1; color: #6846a5; }
-.take-button:hover { background: #ece3f7; }
-.filter-tab.active { color: #6846a5; }
-.verified-badge { color: #6846a5; background: #f0eafb; }
-.profile-cover { background: linear-gradient(120deg, #eee7f8, #f6f2fb 60%, #fff5cf); }
-.theme-toggle { color: #6846a5; font-size: 17px; }
-.theme-toggle:hover { color: #d1a817; }
+.brand-mark, .primary-button { background: var(--brand); color: var(--brand-contrast); }
+.brand-mark span { color: var(--warm); }
+.primary-button:hover { filter: brightness(.9); }
+.nav-item.active, .filter-tab.active { background: color-mix(in srgb, var(--brand) 10%, white); color: var(--brand); }
+.hero-card { background: linear-gradient(110deg, #f5f8fc, #fff8e3); }
+.hero-card h2 { color: #253149; }
+.hero-card h2 em, .text-link, .fee, .credit-note span:last-child { color: var(--brand); }
+.hero-kicker, .section-eyebrow { color: #526780; }
+.hero-emoji, .welcome-row h1 span, .tiny-spark { color: #b67a00; }
+.credit-card { background: #f3f6fa; }
+.credit-meter span { background: var(--brand); }
+.stat-icon.mint { background: #eaf1fa; color: var(--brand); }
+.stat-icon.peach, .gift-icon { background: var(--warm-soft); color: #785000; }
+.stat-icon.lavender { background: #eef1f7; color: #495c78; }
+.take-button { background: color-mix(in srgb, var(--brand) 7%, white); border-color: color-mix(in srgb, var(--brand) 20%, white); color: var(--brand); }
+.take-button:hover { background: color-mix(in srgb, var(--brand) 13%, white); }
+.verified-badge { color: var(--brand); background: color-mix(in srgb, var(--brand) 9%, white); }
+.profile-cover { background: linear-gradient(120deg, #e7eef8, #f2f5fa 60%, #fff2c9); }
+.theme-toggle { color: var(--brand); font-size: 17px; }
+.theme-toggle:hover { color: #a86d00; }
+.accent-setting { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 5px; }
+.accent-setting p { color: var(--muted); font-size: 9px; line-height: 1.55; margin: 6px 0 0; }
+.accent-select-wrap { position: relative; }
+.accent-select-wrap::before { content: ""; position: absolute; z-index: 1; left: 10px; top: 50%; width: 13px; height: 13px; border-radius: 50%; background: var(--brand); transform: translateY(-50%); pointer-events: none; }
+#accentSelect { padding-left: 32px; border-left: 4px solid var(--brand); }
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --ink: #f2edf8;
-  --deep: #f2edf8;
-  --paper: #17131e;
-  --line: #383043;
-  --muted: #b2a9be;
-  --mint: #30263d;
-  --surface: #211c2b;
-  --surface-muted: #292335;
-  --accent: #f2d05b;
-  --accent-soft: #3c3420;
+  --ink: #f4f4f1;
+  --deep: #f4f4f1;
+  --paper: #080808;
+  --surface: #141414;
+  --surface-alt: #1c1c1c;
+  --line: #303030;
+  --muted: #b0b0b0;
+  --brand: #ffda35;
+  --brand-contrast: #181500;
+  --warm: #ffda35;
+  --warm-soft: #332d12;
 }
 
 html[data-theme="dark"] body { background: var(--paper); color: var(--ink); }
@@ -79,31 +85,35 @@ html[data-theme="dark"] .settings-head h3,
 html[data-theme="dark"] .profile-main h2,
 html[data-theme="dark"] .field-label { color: var(--ink); }
 html[data-theme="dark"] .hero-card,
-html[data-theme="dark"] .preview-card { background: #2b2437; }
+html[data-theme="dark"] .preview-card { background: #1b1b1b; border: 1px solid #303030; }
 html[data-theme="dark"] .hero-card h2,
-html[data-theme="dark"] .preview-card h3 { color: #f2edf8; }
+html[data-theme="dark"] .preview-card h3 { color: #f4f4f1; }
 html[data-theme="dark"] .hero-card p,
-html[data-theme="dark"] .preview-card > p { color: #c4b9d2; }
-html[data-theme="dark"] .credit-card { background: #292335; color: var(--ink); }
+html[data-theme="dark"] .preview-card > p { color: #c2c2c2; }
+html[data-theme="dark"] .credit-card { background: #1c1c1c; color: var(--ink); }
 html[data-theme="dark"] .nav-item.active,
-html[data-theme="dark"] .filter-tab.active { background: #392c4d; color: #d7c2ff; }
-html[data-theme="dark"] .nav-item { color: #c1b8cc; }
+html[data-theme="dark"] .filter-tab.active { background: #332d12; color: var(--brand); }
+html[data-theme="dark"] .nav-item { color: #c1c1c1; }
 html[data-theme="dark"] .request-form input,
 html[data-theme="dark"] .request-form select,
 html[data-theme="dark"] .settings-card input,
 html[data-theme="dark"] .settings-card select,
 html[data-theme="dark"] .settings-card textarea,
 html[data-theme="dark"] .login-card input,
-html[data-theme="dark"] .fee-input { background: #18141f; color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] .fee-input { background: #090909; color: var(--ink); border-color: var(--line); }
 html[data-theme="dark"] .quick-pick,
 html[data-theme="dark"] .upload-box,
-html[data-theme="dark"] .privacy-hint { background: #292335; color: #d4cadd; border-color: var(--line); }
+html[data-theme="dark"] .privacy-hint { background: #1c1c1c; color: #dedede; border-color: var(--line); }
 html[data-theme="dark"] .bottom-nudge { background: var(--surface); border-color: var(--line); }
 html[data-theme="dark"] .bottom-nudge strong,
 html[data-theme="dark"] .reward-link strong { color: var(--ink); }
-html[data-theme="dark"] .profile-cover { background: linear-gradient(120deg, #392c4d, #2b2437 60%, #3d3524); }
+html[data-theme="dark"] .profile-cover { background: linear-gradient(120deg, #242424, #171717 60%, #393014); }
 html[data-theme="dark"] .profile-stats,
 html[data-theme="dark"] .settings-head,
 html[data-theme="dark"] .settings-footer,
-html[data-theme="dark"] .form-section { border-color: var(--line); }
-html[data-theme="dark"] .theme-toggle { color: #f2d05b; }
+html[data-theme="dark"] .form-section,
+html[data-theme="dark"] .accent-setting { border-color: var(--line); }
+html[data-theme="dark"] .theme-toggle { color: var(--brand); }
+
+/* Keep a user's chosen accent while preserving contrast in either mode. */
+html[style*="--custom-accent"] { --brand: var(--custom-accent); --brand-contrast: var(--custom-accent-contrast); }
