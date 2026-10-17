@@ -1,0 +1,109 @@
+/* CampusGo's default palette: white surfaces with purple and warm yellow accents. */
+:root {
+  --ink: #302541;
+  --deep: #3b2b51;
+  --green: #6846a5;
+  --mint: #f0eafb;
+  --paper: #ffffff;
+  --line: #ebe6f2;
+  --muted: #887f94;
+  --accent: #f2cb45;
+  --accent-soft: #fff7d8;
+  --surface: #ffffff;
+  --surface-muted: #faf8fd;
+}
+
+body { background: var(--paper); color: var(--ink); }
+.sidebar, .topbar, .stat-card, .order-card, .request-form, .settings-card,
+.profile-card, .login-card, .campus-chip, .sort-button, .nav-count,
+.hero-button, .signup-button { background-color: var(--surface); }
+.brand { color: var(--deep); }
+.brand-mark, .primary-button { background-color: #6846a5; }
+.brand-mark span { color: var(--accent); }
+.primary-button:hover { background-color: #533582; }
+.nav-item.active, .filter-tab.active { background: var(--mint); color: #6846a5; }
+.hero-card { background: #f2edfa; }
+.hero-card h2 { color: #3b2b51; }
+.hero-card h2 em, .text-link, .fee, .credit-note span:last-child { color: #6846a5; }
+.hero-kicker, .section-eyebrow { color: #78629b; }
+.hero-emoji, .welcome-row h1 span, .tiny-spark { color: #d1a817; }
+.credit-card { background: #f4f0fa; }
+.credit-meter span { background: #8d6bc6; }
+.stat-icon.mint { background: #f0eafb; color: #6846a5; }
+.stat-icon.peach, .gift-icon { background: #fff7d8; color: #9a7713; }
+.stat-icon.lavender { background: #eee8f8; color: #6846a5; }
+.take-button { background: #f5f0fb; border-color: #e2d8f1; color: #6846a5; }
+.take-button:hover { background: #ece3f7; }
+.filter-tab.active { color: #6846a5; }
+.verified-badge { color: #6846a5; background: #f0eafb; }
+.profile-cover { background: linear-gradient(120deg, #eee7f8, #f6f2fb 60%, #fff5cf); }
+.theme-toggle { color: #6846a5; font-size: 17px; }
+.theme-toggle:hover { color: #d1a817; }
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #f2edf8;
+  --deep: #f2edf8;
+  --paper: #17131e;
+  --line: #383043;
+  --muted: #b2a9be;
+  --mint: #30263d;
+  --surface: #211c2b;
+  --surface-muted: #292335;
+  --accent: #f2d05b;
+  --accent-soft: #3c3420;
+}
+
+html[data-theme="dark"] body { background: var(--paper); color: var(--ink); }
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .order-card,
+html[data-theme="dark"] .request-form,
+html[data-theme="dark"] .settings-card,
+html[data-theme="dark"] .profile-card,
+html[data-theme="dark"] .login-card,
+html[data-theme="dark"] .campus-chip,
+html[data-theme="dark"] .sort-button,
+html[data-theme="dark"] .nav-count,
+html[data-theme="dark"] .hero-button,
+html[data-theme="dark"] .signup-button { background-color: var(--surface); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] .main-content,
+html[data-theme="dark"] .view { color: var(--ink); }
+html[data-theme="dark"] .welcome-row h1,
+html[data-theme="dark"] .page-heading h1,
+html[data-theme="dark"] .section-head h2,
+html[data-theme="dark"] .order-card h3,
+html[data-theme="dark"] .requester strong,
+html[data-theme="dark"] .settings-head h3,
+html[data-theme="dark"] .profile-main h2,
+html[data-theme="dark"] .field-label { color: var(--ink); }
+html[data-theme="dark"] .hero-card,
+html[data-theme="dark"] .preview-card { background: #2b2437; }
+html[data-theme="dark"] .hero-card h2,
+html[data-theme="dark"] .preview-card h3 { color: #f2edf8; }
+html[data-theme="dark"] .hero-card p,
+html[data-theme="dark"] .preview-card > p { color: #c4b9d2; }
+html[data-theme="dark"] .credit-card { background: #292335; color: var(--ink); }
+html[data-theme="dark"] .nav-item.active,
+html[data-theme="dark"] .filter-tab.active { background: #392c4d; color: #d7c2ff; }
+html[data-theme="dark"] .nav-item { color: #c1b8cc; }
+html[data-theme="dark"] .request-form input,
+html[data-theme="dark"] .request-form select,
+html[data-theme="dark"] .settings-card input,
+html[data-theme="dark"] .settings-card select,
+html[data-theme="dark"] .settings-card textarea,
+html[data-theme="dark"] .login-card input,
+html[data-theme="dark"] .fee-input { background: #18141f; color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] .quick-pick,
+html[data-theme="dark"] .upload-box,
+html[data-theme="dark"] .privacy-hint { background: #292335; color: #d4cadd; border-color: var(--line); }
+html[data-theme="dark"] .bottom-nudge { background: var(--surface); border-color: var(--line); }
+html[data-theme="dark"] .bottom-nudge strong,
+html[data-theme="dark"] .reward-link strong { color: var(--ink); }
+html[data-theme="dark"] .profile-cover { background: linear-gradient(120deg, #392c4d, #2b2437 60%, #3d3524); }
+html[data-theme="dark"] .profile-stats,
+html[data-theme="dark"] .settings-head,
+html[data-theme="dark"] .settings-footer,
+html[data-theme="dark"] .form-section { border-color: var(--line); }
+html[data-theme="dark"] .theme-toggle { color: #f2d05b; }
