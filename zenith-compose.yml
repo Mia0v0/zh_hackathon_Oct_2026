@@ -1,0 +1,22 @@
+x-zenith:
+  catalog:
+    name: CampusGo
+    description: A peer-to-peer campus delivery board for students and staff.
+    authors: [Mia O.]
+    source: https://github.com/Mia0v0/zh_hackathon_Oct_2026
+    license: MIT
+    tags: [campus, community, delivery]
+  env:
+    SMTP_HOST: ZENITH_SMTP_HOST
+    SMTP_PORT: ZENITH_SMTP_PORT
+    SMTP_USERNAME: ZENITH_SMTP_USER
+    SMTP_PASSWORD: ZENITH_SMTP_PASS
+    SMTP_FROM: ZENITH_SMTP_FROM
+  expose:
+    - { service: web, port: 3000, web: true }
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"

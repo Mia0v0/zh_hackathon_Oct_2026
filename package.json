@@ -1,0 +1,7 @@
+{
+  "name": "campusgo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A peer-to-peer campus delivery board",
+  "scripts": { "start": "node server.js" }
+}
