@@ -14,7 +14,7 @@ Open `http://localhost:3000`.
 
 ## Current scope
 
-This version is a front-end prototype. Profile details, requests, and credits are stored in the browser's local storage. Sign-in is a demo flow; it does not verify university identities or share data between devices. A production campus service will need university authentication and a shared backend.
+This version is a front-end prototype. Profile details, requests, credits, and appearance preferences are stored in the browser's local storage. The appearance settings include light and dark modes, pink, sunshine, ocean, lavender, and midnight presets, plus separate color and text-size controls. Sign-in is a demo flow; it does not verify university identities or share data between devices. A production campus service will need university authentication and a shared backend.
 
 ## Zenith preview
 
