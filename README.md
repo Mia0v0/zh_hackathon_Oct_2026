@@ -1,6 +1,6 @@
 # CampusGo
 
-CampusGo is a campus delivery board prototype for students and staff. Community members can post pickup requests, choose who can see them, offer a delivery fee, and accept nearby requests to earn credits. The interface uses white with blue and warm accents in light mode, black with yellow in dark mode, and a personal accent selector with named, high-contrast choices.
+CampusGo is a campus delivery board prototype for students and staff. Community members can post pickup requests, choose who can see them, offer a delivery fee, and accept nearby requests to earn credits. The interface uses a white, purple, and yellow palette, with a personal light or dark theme toggle.
 
 ## Run locally
 
