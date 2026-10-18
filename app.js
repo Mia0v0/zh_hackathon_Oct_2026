@@ -11,13 +11,14 @@ const accountStoreKey='omw-accounts',sessionKey='omw-session-zid';let authMode='
 function uniqueOrders(orders){const byId=new Map();(orders||[]).forEach((order,index)=>{const key=order.id||('__legacy_'+index),existing=byId.get(key);if(!existing||(!existing.completedAt&&order.completedAt)||(!!existing.acceptedBy!==!!order.acceptedBy&&order.acceptedBy))byId.set(key,order)});return [...byId.values()]}
 const appearanceDefaults={preset:'campus',mode:'light',background:'#ffffff',button:'#28644e',text:'#20342d',fontSize:14};
 const appearancePresets={
-  campus:{mode:'light',background:'#ffffff',button:'#28644e',text:'#20342d'},
-  pink:{mode:'light',background:'#fff4f8',button:'#a62d62',text:'#391725'},
-  sunshine:{mode:'light',background:'#fff9d9',button:'#765400',text:'#302800'},
-  ocean:{mode:'light',background:'#f2f7ff',button:'#235a9e',text:'#17273d'},
-  lavender:{mode:'light',background:'#f7f3ff',button:'#6445a0',text:'#2a1d3a'},
-  midnight:{mode:'dark',background:'#090a0e',button:'#ffd839',text:'#f5f5f2'}
+  campus:{light:{background:'#ffffff',button:'#28644e',text:'#20342d'},dark:{background:'#111a16',button:'#65b987',text:'#f5f5f2'}},
+  pink:{light:{background:'#fff4f8',button:'#a62d62',text:'#391725'},dark:{background:'#21131a',button:'#e676ad',text:'#fff1f7'}},
+  sunshine:{light:{background:'#fff9d9',button:'#765400',text:'#302800'},dark:{background:'#211d0d',button:'#e6c45a',text:'#fff8d4'}},
+  ocean:{light:{background:'#f2f7ff',button:'#235a9e',text:'#17273d'},dark:{background:'#111a29',button:'#79b7f3',text:'#eff6ff'}},
+  lavender:{light:{background:'#f7f3ff',button:'#6445a0',text:'#2a1d3a'},dark:{background:'#1c1728',button:'#b9a0f2',text:'#f5efff'}},
+  midnight:{light:{background:'#f1f1ea',button:'#353a40',text:'#171a1d'},dark:{background:'#090a0e',button:'#ffd839',text:'#f5f5f2'}}
 };
+function appearanceForPreset(preset,mode){return {...appearancePresets[preset][mode],preset,mode}}
 state.profile.appearance={...appearanceDefaults};
 let savedState=null,storedAccounts={};try{savedState=JSON.parse(localStorage.getItem('campusgo-state')||'null');storedAccounts=JSON.parse(localStorage.getItem(accountStoreKey)||'{}')}catch{}let removedCompletedOrders=false;if(savedState){const loadedOrders=uniqueOrders(savedState.orders);state.orders=loadedOrders.filter(order=>!order.completedAt);removedCompletedOrders=state.orders.length!==loadedOrders.length}const sessionZid=sessionStorage.getItem(sessionKey),sessionAccount=storedAccounts[sessionZid],savedProfile=savedState?.profile?.zid===sessionZid?savedState.profile:null;if(sessionZid&&sessionAccount){state.profile={...state.profile,...(sessionAccount.appearance?{appearance:sessionAccount.appearance}:{}),...(savedProfile||{}),name:`${sessionAccount.first} ${sessionAccount.last}`,role:sessionAccount.role==='Staff'?'Staff member':'Student',year:sessionAccount.year,email:`${sessionZid}@ad.unsw.edu.au`,zid:sessionZid,schoolYear:sessionAccount.schoolYear,credits:sessionAccount.credits??savedProfile?.credits??0,deliveries:sessionAccount.deliveries??savedProfile?.deliveries??0,avatar:sessionAccount.avatar??savedProfile?.avatar??'',walletBalance:sessionAccount.walletBalance??savedProfile?.walletBalance??0,walletTransactions:sessionAccount.walletTransactions??savedProfile?.walletTransactions??[]};signedIn=true}else if(sessionZid){sessionStorage.removeItem(sessionKey)}
 state.profile.appearance={...appearanceDefaults,...(state.profile.appearance||{})};
@@ -85,8 +86,8 @@ window.addEventListener('storage',e=>{if(e.key==='campusgo-state'&&e.newValue){t
 checkYearRollover();updateProfile();updateAuthUi();renderBoard();renderMine();
 applyAppearance();
 function saveAppearance(){state.profile.appearance.preset='custom';applyAppearance();persist();}
-$$('[data-preset]').forEach(button=>button.addEventListener('click',()=>{const preset=button.dataset.preset;state.profile.appearance={...state.profile.appearance,...appearancePresets[preset],preset};applyAppearance();persist();}));
-$('#themeMode').addEventListener('change',e=>{const preset=e.target.value==='dark'?'midnight':'campus';state.profile.appearance={...state.profile.appearance,...appearancePresets[preset],preset};applyAppearance();persist();});
-$('#quickThemeToggle').addEventListener('click',()=>{const preset=state.profile.appearance.mode==='dark'?'campus':'midnight';state.profile.appearance={...state.profile.appearance,...appearancePresets[preset],preset};applyAppearance();persist();});
+$$('[data-preset]').forEach(button=>button.addEventListener('click',()=>{const preset=button.dataset.preset;state.profile.appearance={...state.profile.appearance,...appearanceForPreset(preset,state.profile.appearance.mode)};applyAppearance();persist();}));
+$('#themeMode').addEventListener('change',e=>{const current=state.profile.appearance,preset=appearancePresets[current.preset]?current.preset:'campus';state.profile.appearance={...current,...appearanceForPreset(preset,e.target.value)};applyAppearance();persist();});
+$('#quickThemeToggle').addEventListener('click',()=>{const current=state.profile.appearance,preset=appearancePresets[current.preset]?current.preset:'campus',mode=current.mode==='dark'?'light':'dark';state.profile.appearance={...current,...appearanceForPreset(preset,mode)};applyAppearance();persist();});
 [['backgroundColor','background'],['buttonColor','button'],['wordColor','text']].forEach(([id,key])=>$('#'+id).addEventListener('input',e=>{state.profile.appearance[key]=e.target.value;saveAppearance();}));
 $('#fontSize').addEventListener('input',e=>{state.profile.appearance.fontSize=Number(e.target.value);saveAppearance();});
