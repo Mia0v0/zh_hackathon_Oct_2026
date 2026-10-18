@@ -9,9 +9,9 @@ const starterOrders = [
 const state = { profile:{ name:'Campus guest', role:'Student', year:'Year 1', email:'guest@campus.local', credits:0, deliveries:0, walletBalance:0, walletTransactions:[] }, orders:[], filter:'all', mineFilter:'all', sort:'nearby' };
 const accountStoreKey='omw-accounts',sessionKey='omw-session-zid';let authMode='login',signedIn=false,pendingCancellation=null,walletFilter='earnings';
 function uniqueOrders(orders){const byId=new Map();(orders||[]).forEach((order,index)=>{const key=order.id||('__legacy_'+index),existing=byId.get(key);if(!existing||(!existing.completedAt&&order.completedAt)||(!!existing.acceptedBy!==!!order.acceptedBy&&order.acceptedBy))byId.set(key,order)});return [...byId.values()]}
-const appearanceDefaults={preset:'campus',mode:'light',background:'#ffffff',button:'#28644e',text:'#20342d',fontSize:14};
+const appearanceDefaults={preset:'campus',mode:'light',background:'#f7f7f5',button:'#e5cf63',text:'#231f20',fontSize:14};
 const appearancePresets={
-  campus:{light:{background:'#ffffff',button:'#28644e',text:'#20342d'},dark:{background:'#111a16',button:'#65b987',text:'#f5f5f2'}},
+  campus:{light:{background:'#f7f7f5',button:'#e5cf63',text:'#231f20'},dark:{background:'#191919',button:'#e5cf63',text:'#f5f4ef'}},
   pink:{light:{background:'#fff4f8',button:'#a62d62',text:'#391725'},dark:{background:'#21131a',button:'#e676ad',text:'#fff1f7'}},
   sunshine:{light:{background:'#fff9d9',button:'#765400',text:'#302800'},dark:{background:'#211d0d',button:'#e6c45a',text:'#fff8d4'}},
   ocean:{light:{background:'#f2f7ff',button:'#235a9e',text:'#17273d'},dark:{background:'#111a29',button:'#79b7f3',text:'#eff6ff'}},
@@ -21,7 +21,7 @@ const appearancePresets={
 function appearanceForPreset(preset,mode){return {...appearancePresets[preset][mode],preset,mode}}
 state.profile.appearance={...appearanceDefaults};
 let savedState=null,storedAccounts={};try{savedState=JSON.parse(localStorage.getItem('campusgo-state')||'null');storedAccounts=JSON.parse(localStorage.getItem(accountStoreKey)||'{}')}catch{}let removedCompletedOrders=false;if(savedState){const loadedOrders=uniqueOrders(savedState.orders);state.orders=loadedOrders.filter(order=>!order.completedAt);removedCompletedOrders=state.orders.length!==loadedOrders.length}const sessionZid=sessionStorage.getItem(sessionKey),sessionAccount=storedAccounts[sessionZid],savedProfile=savedState?.profile?.zid===sessionZid?savedState.profile:null;if(sessionZid&&sessionAccount){state.profile={...state.profile,...(sessionAccount.appearance?{appearance:sessionAccount.appearance}:{}),...(savedProfile||{}),name:`${sessionAccount.first} ${sessionAccount.last}`,role:sessionAccount.role==='Staff'?'Staff member':'Student',year:sessionAccount.year,email:`${sessionZid}@ad.unsw.edu.au`,zid:sessionZid,schoolYear:sessionAccount.schoolYear,credits:sessionAccount.credits??savedProfile?.credits??0,deliveries:sessionAccount.deliveries??savedProfile?.deliveries??0,avatar:sessionAccount.avatar??savedProfile?.avatar??'',walletBalance:sessionAccount.walletBalance??savedProfile?.walletBalance??0,walletTransactions:sessionAccount.walletTransactions??savedProfile?.walletTransactions??[]};signedIn=true}else if(sessionZid){sessionStorage.removeItem(sessionKey)}
-state.profile.appearance={...appearanceDefaults,...(state.profile.appearance||{})};
+const loadedAppearance=state.profile.appearance||{};state.profile.appearance=loadedAppearance.preset==='campus'?appearanceForPreset('campus',loadedAppearance.mode||'light'):{...appearanceDefaults,...loadedAppearance};
 if(state.profile.email.endsWith('@northbridge.edu.au'))state.profile.email='z1234567@ad.unsw.edu.au';
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
