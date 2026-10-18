@@ -1,6 +1,6 @@
-# CampusGo
+# On My Way (OMW)
 
-CampusGo is a campus delivery board prototype for students and staff at UNSW Sydney's Kensington campus. Community members can post pickup requests, choose who can see them, offer a delivery fee, and accept nearby requests to earn credits. Sample handoff points use UNSW locations including the Main Library, Mathews Building, Quadrangle, Roundhouse, and Village Green.
+On My Way (OMW) is a campus delivery board prototype for students and staff at UNSW Sydney's Kensington campus. Community members can post pickup requests, choose who can see them, offer a delivery fee, and accept nearby requests to earn credits. Sample handoff points use UNSW locations including the Main Library, Mathews Building, Quadrangle, Roundhouse, and Village Green.
 
 ## Run locally
 

@@ -1,7 +1,7 @@
 {
-  "name": "campusgo",
+  "name": "on-my-way",
   "version": "1.0.0",
   "private": true,
-  "description": "A peer-to-peer campus delivery board",
+  "description": "On My Way (OMW), a peer-to-peer campus delivery board",
   "scripts": { "start": "node server.js" }
 }
