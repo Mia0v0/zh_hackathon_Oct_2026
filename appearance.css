@@ -43,3 +43,10 @@ html[data-theme=dark] .category-icon,html[data-theme=dark] .stat-icon,html[data-
 html[data-theme=dark] .order-photo,html[data-theme=dark] .take-button,html[data-theme=dark] .filter-tab.active,html[data-theme=dark] .nav-item.active,html[data-theme=dark] .quick-pick.selected{background:var(--dark-raised)!important;color:var(--user-text)!important;border-color:var(--dark-border)!important}
 
 html[style*="--user-text"] .primary-button span{color:var(--button-foreground)!important}
+
+/* Keep the lion beside the sidebar wordmark, not inside the logo tile. */
+.brand-mark{width:29px;display:grid;gap:0;flex:none}
+.brand{gap:6px;flex-wrap:nowrap;white-space:nowrap}
+.brand-name{white-space:nowrap;flex:none}
+.sidebar-lions{display:flex;align-items:center;gap:1px;margin-left:auto;flex:none}
+.sidebar-lion-outline{width:18px;height:18px;fill:none;stroke:#c8cdd1;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;flex:none}
