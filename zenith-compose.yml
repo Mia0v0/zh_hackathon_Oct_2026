@@ -12,6 +12,12 @@ x-zenith:
     SMTP_USERNAME: ZENITH_SMTP_USER
     SMTP_PASSWORD: ZENITH_SMTP_PASS
     SMTP_FROM: ZENITH_SMTP_FROM
+    GOOGLE_MAPS_API_KEY:
+      input:
+        label: Google Maps Geocoding API key
+        description: Optional server-side key used to turn current coordinates into a building or place name.
+        secret: true
+      services: [web]
   expose:
     - { service: web, port: 3000, web: true }
 
